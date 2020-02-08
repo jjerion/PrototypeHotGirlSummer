@@ -340,6 +340,7 @@ GameObject:
   - component: {fileID: 1354138715}
   - component: {fileID: 1354138717}
   - component: {fileID: 1354138716}
+  - component: {fileID: 1354138719}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -371,8 +372,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 1354138717}
+  selectedCommands:
+  - {fileID: 1354138719}
   variables: []
   description: 
   stepPause: 0
@@ -422,7 +425,8 @@ MonoBehaviour:
   blockName: New Block
   description: 
   eventHandler: {fileID: 1354138716}
-  commandList: []
+  commandList:
+  - {fileID: 1354138719}
 --- !u!4 &1354138718
 Transform:
   m_ObjectHideFlags: 0
@@ -437,3 +441,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1354138719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354138714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1
+  indentLevel: 0
+  storyText: TIME TO THROW THE BEST PARTY OF 1999, BABY
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
