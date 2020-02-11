@@ -20,6 +20,9 @@ public class CustomizableOptions : MonoBehaviour
         file = DataHolder.CreateFromJSON(fileContents);
     }
 
+    
+
+
     // Update is called once per frame
     void Update()
     {
