@@ -6,24 +6,56 @@ using UnityEngine;
 public class Icon : MonoBehaviour
 {
 
-    public string feature;
     private BoxCollider2D iconCollider;
     private SpriteRenderer image;
-    public static Characteristic featuredCharacterstic;
+    public string featureString;
+    public struct Features
+    {
+        public Characteristic featuredCharacteristic;
 
-    
-    void Start()
+        public Features(string featureString)
+        {
+            if (featureString == "Nose")
+            {
+                featuredCharacteristic = new Nose();
+            }
+            else if (featureString == "Head")
+            {
+                featuredCharacteristic = new Head();
+            }
+            else if (featureString == "Hair")
+            {
+                featuredCharacteristic = new Hair();
+            }
+            else if (featureString == "Eyes")
+            {
+                featuredCharacteristic = new Eyes();
+            }
+            else if (featureString == "Mouth")
+            {
+                featuredCharacteristic = new Mouth();
+            }
+            else featuredCharacteristic = null;
+        }
+
+        
+    }
+    public Features feature;
+
+
+void Start()
     {
         iconCollider = gameObject.GetComponent<BoxCollider2D>();
         image = gameObject.GetComponent<SpriteRenderer>();
-        featuredCharacterstic = gameObject.GetComponent<Characteristic>();
+        feature = new Features(featureString);
+        
     }
 
     private void OnMouseDown()
     {
 
 
-        //CustomizableOptions.DisplayOptions< Type.GetType(feature) >();
+        CustomizableOptions.DisplayOptions(feature.featuredCharacteristic);
     }
 
     private void OnMouseOver()

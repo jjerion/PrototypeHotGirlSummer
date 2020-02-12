@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Hair : Characteristic
 {
-    // Start is called before the first frame update
-    void Start()
+    public Hair()
     {
-        
-    }
+        string[] listOfSpriteNames = CustomizableOptions.featureSprites.Hair;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int i = 0; i < listOfSpriteNames.Length; i++)
+        {
+            listOfSprites[i] = Resources.Load<Sprite>("Eyes/" + listOfSpriteNames[i]);
+        }
+
+        firstSpriteIndex = 0;
+        lastSpriteIndex = 4;
     }
 }
