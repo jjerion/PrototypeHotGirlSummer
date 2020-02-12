@@ -1,25 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class CustomizableOptions : MonoBehaviour
 {
     public string streamingPath;
-    public static DataHolder file;
+    public static DataHolder featureSprites;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        file = new DataHolder();
+        featureSprites = new DataHolder();
         streamingPath = Path.Combine(Application.streamingAssetsPath, "data.json");
 
         StreamReader reader = new StreamReader(streamingPath);
 
         string fileContents = reader.ReadToEnd();
 
-        file = DataHolder.CreateFromJSON(fileContents);
+        featureSprites = DataHolder.CreateFromJSON(fileContents);
     }
 
+    public static void DisplayOptions<T>() where T : Characteristic
+    {
+        
+    }
     
 
 

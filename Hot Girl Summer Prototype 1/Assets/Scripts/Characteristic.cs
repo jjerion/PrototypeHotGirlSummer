@@ -17,7 +17,7 @@ public class Characteristic
         lastSpriteIndex = firstSpriteIndex;
         for (int i = 0; i < 5; i++)
         {
-            spritesOnDisplay[i] = lastSpriteIndex;
+            spritesOnDisplay[i] = listOfSprites[lastSpriteIndex];
             lastSpriteIndex = lastSpriteIndex + 1 % 5;
         }
     }

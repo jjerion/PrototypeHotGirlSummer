@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 130365777}
   - component: {fileID: 130365778}
+  - component: {fileID: 130365779}
   m_Layer: 0
   m_Name: Nose icon
   m_TagString: Untagged
@@ -202,6 +203,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &130365779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130365776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144afd92633334340b5b030be7e995ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feature: Nose
 --- !u!1 &139592952
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,8 +226,9 @@ GameObject:
   m_Component:
   - component: {fileID: 139592953}
   - component: {fileID: 139592954}
+  - component: {fileID: 139592955}
   m_Layer: 0
-  m_Name: Lips icon
+  m_Name: Mouth icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,6 +298,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &139592955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139592952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144afd92633334340b5b030be7e995ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feature: Mouth
 --- !u!1 &144926630
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 144926631}
   - component: {fileID: 144926633}
+  - component: {fileID: 144926634}
   - component: {fileID: 144926632}
   m_Layer: 0
   m_Name: Hair icon
@@ -315,60 +344,32 @@ Transform:
   m_Father: {fileID: 1138863155}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &144926632
-MonoBehaviour:
+--- !u!61 &144926632
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144926630}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 16, y: 16}
+    newSize: {x: 16, y: 16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 16, y: 16}
+  m_EdgeRadius: 0
 --- !u!212 &144926633
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -419,6 +420,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &144926634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144926630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144afd92633334340b5b030be7e995ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feature: Hair
 --- !u!1 &183042973
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 574648080}
   - component: {fileID: 574648081}
+  - component: {fileID: 574648082}
   m_Layer: 0
   m_Name: Head icon
   m_TagString: Untagged
@@ -581,6 +596,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &574648082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574648079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144afd92633334340b5b030be7e995ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feature: Head
 --- !u!1 &1041269171
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +820,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138863154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -186.5149, y: 15.533752, z: 0}
+  m_LocalPosition: {x: -96, y: 15.533752, z: 0}
   m_LocalScale: {x: 10.391, y: 10.391, z: 10.391}
   m_Children:
   - {fileID: 183042975}
@@ -914,6 +942,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1618117105}
   - component: {fileID: 1618117106}
+  - component: {fileID: 1618117108}
+  - component: {fileID: 1618117107}
   m_Layer: 0
   m_Name: Eyes icon
   m_TagString: Untagged
@@ -985,6 +1015,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1618117107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618117104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144afd92633334340b5b030be7e995ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feature: Eyes
+--- !u!114 &1618117108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618117104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e51349fecc6a45458a6f023fbfa1736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1901362266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,7 +1082,7 @@ GameObject:
   - component: {fileID: 2028649936}
   - component: {fileID: 2028649935}
   m_Layer: 0
-  m_Name: Left Arrow Button
+  m_Name: Right Arrow Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1091,7 +1146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028649934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 342.99994, y: -160.125, z: 0}
+  m_LocalPosition: {x: 299, y: -160.125, z: 0}
   m_LocalScale: {x: 6.5259995, y: 6.5259995, z: 6.5259995}
   m_Children: []
   m_Father: {fileID: 1115183759}
@@ -1108,7 +1163,7 @@ GameObject:
   - component: {fileID: 2032695869}
   - component: {fileID: 2032695868}
   m_Layer: 0
-  m_Name: Right Arrow Button
+  m_Name: Left Arrow Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
