@@ -9,6 +9,11 @@ TagManager:
   - Env_Background
   - Kelly
   - Meg
+  - Hair
+  - Eyes
+  - Nose
+  - Mouth
+  - Head
   layers:
   - Default
   - TransparentFX

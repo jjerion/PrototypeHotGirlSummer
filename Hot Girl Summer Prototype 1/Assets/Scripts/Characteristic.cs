@@ -13,12 +13,27 @@ public class Characteristic
 
     public void IncrementDisplay(bool isLeft)
     {
-        firstSpriteIndex = firstSpriteIndex + 1 % 5;
-        lastSpriteIndex = firstSpriteIndex;
-        for (int i = 0; i < 5; i++)
+        int minimumNumberOfDisplayedOptions = Mathf.Min(5, listOfSprites.Length);
+        if (isLeft)
         {
-            spritesOnDisplay[i] = listOfSprites[lastSpriteIndex];
-            lastSpriteIndex = lastSpriteIndex + 1 % 5;
+            firstSpriteIndex = firstSpriteIndex + 1 % listOfSprites.Length;
+            lastSpriteIndex = firstSpriteIndex;
+            for (int i = 0; i < minimumNumberOfDisplayedOptions; i++)
+            {
+                spritesOnDisplay[i] = listOfSprites[lastSpriteIndex];
+                lastSpriteIndex = lastSpriteIndex + 1 % listOfSprites.Length;
+            }
+        }
+
+        else
+        {
+            firstSpriteIndex = firstSpriteIndex - 1 % listOfSprites.Length;
+            lastSpriteIndex = firstSpriteIndex;
+            for (int i = 0; i < minimumNumberOfDisplayedOptions; i++)
+            {
+                spritesOnDisplay[i] = listOfSprites[lastSpriteIndex];
+                lastSpriteIndex = lastSpriteIndex + 1 % listOfSprites.Length;
+            }
         }
     }
 }

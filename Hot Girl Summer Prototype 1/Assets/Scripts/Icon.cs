@@ -61,7 +61,7 @@ void Start()
     {
 
 
-        CustomizableOptions.DisplayOptions(feature.featuredCharacteristic);
+        CustomizableOptions.DisplayOptions(feature.featuredCharacteristic, featureString);
     }
 
     private void OnMouseOver()

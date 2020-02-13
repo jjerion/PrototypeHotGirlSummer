@@ -9,6 +9,7 @@ public class CustomizableOptions : MonoBehaviour
     public string streamingPath;
     public static DataHolder featureSprites;
     public static Characteristic currentlyDisplayed;
+    public static SpriteRenderer portraitRenderer;
     private static SpriteRenderer[] optionSprites;
 
 
@@ -29,9 +30,10 @@ public class CustomizableOptions : MonoBehaviour
         optionSprites = gameObject.GetComponentsInChildren<SpriteRenderer>();
     }
 
-    public static void DisplayOptions(Characteristic feature) 
+    public static void DisplayOptions(Characteristic feature, string featureString) 
     {
         currentlyDisplayed = feature;
+        portraitRenderer = GameObject.FindGameObjectWithTag(featureString).GetComponent<SpriteRenderer>();
         for (int i = 0; i < optionSprites.Length; i++)
         {
             Debug.Log(optionSprites[i]);
