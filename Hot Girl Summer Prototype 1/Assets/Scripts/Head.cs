@@ -13,13 +13,13 @@ public class Head : Characteristic
         for (int i = 0; i < spritesOnDisplay.Length; i++)
         {
             if (i >= listOfSprites.Length) break;
-            Debug.Log(listOfSpriteNames[i]);
+            //Debug.Log(listOfSpriteNames[i]);
             //listOfSprites[i] = Resources.Load<Sprite>("Hair / " + listOfSpriteNames[i]);
             spritesOnDisplay[i] = listOfSprites[i];
         }
 
         firstSpriteIndex = 0;
-        lastSpriteIndex = 4;
+        lastSpriteIndex = Mathf.Min(listOfSprites.Length - 1, 4);
 
     }
 }

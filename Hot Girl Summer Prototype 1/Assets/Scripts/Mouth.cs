@@ -20,7 +20,7 @@ public class Mouth : Characteristic
         }
 
         firstSpriteIndex = 0;
-        lastSpriteIndex = 4;
+        lastSpriteIndex = Mathf.Min(listOfSprites.Length - 1, 4);
 
     }
 }
