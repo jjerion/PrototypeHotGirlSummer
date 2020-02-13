@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 286027722}
   m_Layer: 0
   m_Name: Kelly_Collider
-  m_TagString: Untagged
+  m_TagString: Kelly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 439036615}
   m_Layer: 0
   m_Name: Meg_Collider
-  m_TagString: Untagged
+  m_TagString: Meg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -786,6 +786,7 @@ GameObject:
   - component: {fileID: 454197190}
   - component: {fileID: 454197189}
   - component: {fileID: 454197192}
+  - component: {fileID: 454197193}
   m_Layer: 0
   m_Name: Player_Collider
   m_TagString: Player
@@ -884,6 +885,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &454197193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454197187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c54631e368e4304caee789e8fffa352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myFlowchart: {fileID: 1354138715}
 --- !u!1 &458525531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,6 +1306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 740885542}
   - component: {fileID: 740885543}
+  - component: {fileID: 740885544}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1327,6 +1342,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+--- !u!114 &740885544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740885541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c54631e368e4304caee789e8fffa352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myFlowchart: {fileID: 1354138715}
 --- !u!1 &770368872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2030,13 +2058,14 @@ GameObject:
   - component: {fileID: 1354138728}
   - component: {fileID: 1354138727}
   - component: {fileID: 1354138726}
+  - component: {fileID: 1354138744}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1354138715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,7 +2090,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 1354138717}
   selectedCommands: []
   variables:
   - {fileID: 1354138725}
@@ -2115,6 +2145,7 @@ MonoBehaviour:
   eventHandler: {fileID: 1354138716}
   commandList:
   - {fileID: 1354138719}
+  - {fileID: 1354138744}
 --- !u!4 &1354138718
 Transform:
   m_ObjectHideFlags: 0
@@ -2873,6 +2904,70 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &1354138744
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354138714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb77d0ce495044f6e9feb91b31798e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 25
+  indentLevel: 0
+  variable: {fileID: 1354138725}
+  setOperator: 0
+  booleanData:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  integerData:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  floatData:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  stringData:
+    stringRef: {fileID: 0}
+    stringVal: 
+  animatorData:
+    animatorRef: {fileID: 0}
+    animatorVal: {fileID: 0}
+  audioSourceData:
+    audioSourceRef: {fileID: 0}
+    audioSourceVal: {fileID: 0}
+  colorData:
+    colorRef: {fileID: 0}
+    colorVal: {r: 0, g: 0, b: 0, a: 0}
+  gameObjectData:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 0}
+  materialData:
+    materialRef: {fileID: 0}
+    materialVal: {fileID: 0}
+  objectData:
+    objectRef: {fileID: 0}
+    objectVal: {fileID: 0}
+  rigidbody2DData:
+    rigidbody2DRef: {fileID: 0}
+    rigidbody2DVal: {fileID: 0}
+  spriteData:
+    spriteRef: {fileID: 0}
+    spriteVal: {fileID: 0}
+  textureData:
+    textureRef: {fileID: 0}
+    textureVal: {fileID: 0}
+  transformData:
+    transformRef: {fileID: 0}
+    transformVal: {fileID: 0}
+  vector2Data:
+    vector2Ref: {fileID: 0}
+    vector2Val: {x: 0, y: 0}
+  vector3Data:
+    vector3Ref: {fileID: 0}
+    vector3Val: {x: 0, y: 0, z: 0}
 --- !u!1 &1373188564
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,7 +3751,7 @@ GameObject:
   - component: {fileID: 1640591563}
   m_Layer: 0
   m_Name: Meg
-  m_TagString: Untagged
+  m_TagString: Meg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4211,7 +4306,7 @@ GameObject:
   - component: {fileID: 2056021205}
   m_Layer: 0
   m_Name: Kelly
-  m_TagString: Untagged
+  m_TagString: Kelly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
