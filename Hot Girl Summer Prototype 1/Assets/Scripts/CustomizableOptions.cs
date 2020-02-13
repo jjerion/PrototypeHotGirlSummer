@@ -13,7 +13,7 @@ public class CustomizableOptions : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         featureSprites = new DataHolder();
         streamingPath = Path.Combine(Application.streamingAssetsPath, "CustomizableOptions.json");
@@ -23,6 +23,8 @@ public class CustomizableOptions : MonoBehaviour
         string fileContents = reader.ReadToEnd();
 
         featureSprites = DataHolder.CreateFromJSON(fileContents);
+
+        Debug.Log(featureSprites.Hair[0]);
 
         optionSprites = gameObject.GetComponentsInChildren<SpriteRenderer>();
     }

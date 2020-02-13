@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Characteristic 
 {
-    public readonly Sprite[] listOfSprites;
+    public Sprite[] listOfSprites;
 
     public Sprite[] spritesOnDisplay = new Sprite[5];
 

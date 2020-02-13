@@ -7,10 +7,11 @@ public class Hair : Characteristic
     public Hair()
     {
         string[] listOfSpriteNames = CustomizableOptions.featureSprites.Hair;
-
+        listOfSprites = new Sprite[listOfSpriteNames.Length];
         for (int i = 0; i < listOfSpriteNames.Length; i++)
         {
-            listOfSprites[i] = Resources.Load<Sprite>("Eyes/" + listOfSpriteNames[i]);
+            Debug.Log(listOfSpriteNames[i]);
+            listOfSprites[i] = Resources.Load<Sprite>("Hair/" + listOfSpriteNames[i]);
         }
 
         firstSpriteIndex = 0;
