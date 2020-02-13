@@ -7,6 +7,8 @@ TagManager:
   - Env_Foreground
   - Env_PlayArea
   - Env_Background
+  - Kelly
+  - Meg
   layers:
   - Default
   - TransparentFX

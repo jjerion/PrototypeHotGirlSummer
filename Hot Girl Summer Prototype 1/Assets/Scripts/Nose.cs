@@ -8,7 +8,7 @@ public class Nose : Characteristic
     public Nose()
     {
         
-        string [] listOfSpriteNames = CustomizableOptions.featureSprites.Nose;
+        string[] listOfSpriteNames = CustomizableOptions.featureSprites.Nose;
 
         for (int i = 0; i < listOfSpriteNames.Length; i++)
         {
