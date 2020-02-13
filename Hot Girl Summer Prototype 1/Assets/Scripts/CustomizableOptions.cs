@@ -42,7 +42,6 @@ public class CustomizableOptions : MonoBehaviour
         }
 
     }
-    
 
 
     // Update is called once per frame

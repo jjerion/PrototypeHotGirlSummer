@@ -43,5 +43,7 @@ public class Characteristic
                 spritesOnDisplay[i] = listOfSprites[(firstSpriteIndex + i) % listOfSprites.Length];
             }
         }
+
+        CustomizableOptions.DisplayOptions(CustomizableOptions.currentlyDisplayed, CustomizableOptions.portraitRenderer.gameObject.tag);
     }
 }
