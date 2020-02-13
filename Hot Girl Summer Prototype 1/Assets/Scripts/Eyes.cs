@@ -13,7 +13,7 @@ public class Eyes : Characteristic
         for (int i = 0; i < spritesOnDisplay.Length; i++)
         {
             if (i >= listOfSprites.Length) break;
-            Debug.Log(listOfSpriteNames[i]);
+            //Debug.Log(listOfSpriteNames[i]);
             //listOfSprites[i] = Resources.Load<Sprite>("Hair / " + listOfSpriteNames[i]);
             spritesOnDisplay[i] = listOfSprites[i];
         }
