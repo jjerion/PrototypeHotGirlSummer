@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class Hair : Characteristic
 {
-    public Hair()
+    public Hair(Sprite[] sprites)
     {
         string[] listOfSpriteNames = CustomizableOptions.featureSprites.Hair;
-        listOfSprites = new Sprite[listOfSpriteNames.Length];
-        for (int i = 0; i < listOfSpriteNames.Length; i++)
+        listOfSprites = new Sprite[sprites.Length];
+        listOfSprites = sprites;
+
+        for (int i = 0; i < spritesOnDisplay.Length; i++)
         {
+            if (i >= listOfSprites.Length) break;
             Debug.Log(listOfSpriteNames[i]);
-            listOfSprites[i] = Resources.Load<Sprite>("Hair/" + listOfSpriteNames[i]);
+            //listOfSprites[i] = Resources.Load<Sprite>("Hair / " + listOfSpriteNames[i]);
+            spritesOnDisplay[i] = listOfSprites[i];
         }
 
         firstSpriteIndex = 0;
         lastSpriteIndex = 4;
+        
     }
 }

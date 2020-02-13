@@ -5,16 +5,22 @@ using UnityEngine;
 public class Mouth : Characteristic
 {
 
-    public Mouth()
+    public Mouth(Sprite[] sprites)
     {
         string[] listOfSpriteNames = CustomizableOptions.featureSprites.Mouth;
+        listOfSprites = new Sprite[sprites.Length];
+        listOfSprites = sprites;
 
-        for (int i = 0; i < listOfSpriteNames.Length; i++)
+        for (int i = 0; i < spritesOnDisplay.Length; i++)
         {
-            listOfSprites[i] = Resources.Load<Sprite>("Mouth/" + listOfSpriteNames[i]);
+            if (i >= listOfSprites.Length) break;
+            Debug.Log(listOfSpriteNames[i]);
+            //listOfSprites[i] = Resources.Load<Sprite>("Hair / " + listOfSpriteNames[i]);
+            spritesOnDisplay[i] = listOfSprites[i];
         }
 
         firstSpriteIndex = 0;
         lastSpriteIndex = 4;
+
     }
 }

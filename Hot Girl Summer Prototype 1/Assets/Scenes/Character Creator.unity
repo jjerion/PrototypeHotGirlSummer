@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   featureString: Nose
+  sprites: []
 --- !u!1 &139592952
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   featureString: Mouth
+  sprites: []
 --- !u!1 &144926630
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +435,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   featureString: Hair
+  sprites:
+  - {fileID: 21300000, guid: f362103e4973af64a924d8d71d5c8a31, type: 3}
+  - {fileID: 21300000, guid: a56c35483ac91ba47af26a148737074d, type: 3}
+  - {fileID: 21300000, guid: 89dc1c9d1de823c438fc74f2163faee4, type: 3}
+  - {fileID: 21300000, guid: 001b862121ac3e34ca79865c474590f3, type: 3}
 --- !u!1 &183042973
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,6 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   featureString: Head
+  sprites: []
 --- !u!1 &1041269171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   featureString: Eyes
+  sprites: []
 --- !u!114 &1618117108
 MonoBehaviour:
   m_ObjectHideFlags: 0
