@@ -717,7 +717,7 @@ GameObject:
   m_IsActive: 1
 --- !u!114 &1149632877
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -744,7 +744,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &1149632878
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -769,7 +769,7 @@ MonoBehaviour:
     booleanVal: 0
 --- !u!114 &1149632879
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -794,7 +794,7 @@ MonoBehaviour:
     booleanVal: 0
 --- !u!114 &1149632880
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1223,8 +1223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 465
-    y: 84
+    x: 228.95801
+    y: -40.366226
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1320,8 +1320,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67
-    y: 70
+    x: -189.34671
+    y: -173.65628
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1349,19 +1349,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 0, y: -2}
+  scrollPos: {x: 403.3285, y: 367.3954}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 1
+  zoom: 0.3939976
   scrollViewRect:
     serializedVersion: 2
     x: -343
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 1149632900}
+  selectedCommands:
+  - {fileID: 1149632893}
   variables: []
   description: 
   stepPause: 0
@@ -1667,6 +1669,7 @@ GameObject:
   - component: {fileID: 2100101444}
   - component: {fileID: 2100101446}
   - component: {fileID: 2100101445}
+  - component: {fileID: 2100101447}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1733,3 +1736,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100101443}
   m_CullTransparentMesh: 0
+--- !u!114 &2100101447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100101443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6c669fa56fb496994dd5ae84195fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
