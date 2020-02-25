@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Discard
 {
+
+   
     public List<Card> cardsInDiscard;
+
+    public Discard()
+    {
+        cardsInDiscard = new List<Card>();
+    }
 
     public Card RemoveFromDiscard(Card cardToRemove)
     {

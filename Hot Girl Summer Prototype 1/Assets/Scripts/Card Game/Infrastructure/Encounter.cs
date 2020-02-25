@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Encounter
 {
-    private Deck _playerDeck;
-    private Discard _playerDiscard;
-    private Hand _playerHand;
-    private bool _isItPlayerTurn;
-    private NPC _npc;
+    public static readonly Deck playerDeck;
+    public static readonly Discard playerDiscard;
+    public static readonly Hand playerHand;
+    public bool _isItPlayerTurn;
+    private static NPC _npc;
 
-    public int playerActions;
+    public static int playerActions;
 
     private void Play(Card cardToPlay)
     {
