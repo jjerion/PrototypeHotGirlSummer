@@ -14,6 +14,7 @@ TagManager:
   - Nose
   - Mouth
   - Head
+  - FF_Element
   layers:
   - Default
   - TransparentFX
