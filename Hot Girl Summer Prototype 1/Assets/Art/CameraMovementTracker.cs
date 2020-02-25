@@ -12,9 +12,9 @@ public class CameraMovementTracker : MonoBehaviour
         transform.position = new Vector3(trackThis.position.x, transform.position.y, transform.position.z); //follow x movement
 
         //track character depth
-        if(trackThis.position.z > 2.5) //if player is in back half, move camera 
+        if(trackThis.position.z > 7.5) //if player is in back half, move camera 
         {
-            transform.position = new Vector3(trackThis.position.x, transform.position.y, -3.5f); //follow x movement
+            transform.position = new Vector3(trackThis.position.x, transform.position.y, 1f); //follow x movement
         }
         if (trackThis.position.z <= 2.5) //if player is in front half, move camera
         {
