@@ -7,14 +7,14 @@ public class Deck
     
     public List<Card> cardsInDeck;
     public DeckList DeckList;
-
+    
     public Card Draw()
     {
-
+        return cardsInDeck[1];
     }
     
 
-    public Card AddToDeck(int targetPosition = -1, Card cardToAdd)
+    public Card AddToDeck(Card cardToAdd, int targetPosition = -1)
     {
         return cardToAdd;
     }
