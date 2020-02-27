@@ -35,4 +35,22 @@ public abstract class Card
 
     public abstract void Effect();
 
+    public class DisplayedCard
+    {
+
+        private CardInfo _displayedInfo;
+
+        public DisplayedCard(CardInfo displayedInfo, Transform transform)
+        {
+            _displayedInfo = displayedInfo;
+
+        }
+
+        public void ChangeTransform(Transform newTransform)
+        {
+
+        }
+    }
+
+
 }
