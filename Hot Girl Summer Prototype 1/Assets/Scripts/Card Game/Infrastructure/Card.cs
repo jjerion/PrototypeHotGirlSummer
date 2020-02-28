@@ -5,6 +5,8 @@ using TMPro;
 
 public abstract class Card
 {
+    //Data Structures
+    #region
     public struct CardInfo
     {
         public string cardName;
@@ -31,14 +33,17 @@ public abstract class Card
         Bubbly,
         Hype
     }
+    #endregion
+
 
     public CardInfo displayedInfo;
+    public DisplayedCard cardOnScreen;
 
     public abstract void Effect();
 
-    public class DisplayedCard : MonoBehaviour
+    public class DisplayedCard
     {
-        private readonly GameObject cardDisplay = Resources.Load<GameObject> ("Basic Card");
+        public readonly GameObject cardDisplay = Resources.Load<GameObject> ("Basic Card");
         private CardInfo _displayedInfo;
         
         //Parent Object
@@ -56,7 +61,7 @@ public abstract class Card
 
         public DisplayedCard(CardInfo displayedInfo)
         {
-            _displayedInfo = displayedInfo;
+            this._displayedInfo = displayedInfo;
             cardDisplay = Resources.Load<GameObject>("Basic Card");
             //Initialize attributes according to Prefab
             cardPosition = cardDisplay.GetComponent<RectTransform>();
@@ -77,11 +82,11 @@ public abstract class Card
             effectText = childTexts[1];
 
             //Make Attributes represent card info
-            
-            nameText.text = _displayedInfo.cardName;
-            effectText.text = _displayedInfo.text;
 
-            switch (_displayedInfo.type)
+            nameText.text = this._displayedInfo.cardName;
+            effectText.text = this._displayedInfo.text;
+
+            switch (this._displayedInfo.type)
             {
                 case (int)Vibes.Bubbly:
                     cardImage.sprite = Resources.Load<Sprite>("Cards/Bubbly_Background");
@@ -97,7 +102,7 @@ public abstract class Card
 
             }
             //Instantiate object
-            Object.Instantiate(cardDisplay);
+            //Object.Instantiate(cardDisplay);
 
 
         }
