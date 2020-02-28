@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UIElements;
 
 public abstract class Card
 {
@@ -38,8 +39,20 @@ public abstract class Card
 
     public CardInfo displayedInfo;
     public DisplayedCard cardOnScreen;
-
+    public Button button;
     public abstract void Effect();
+
+    public Card()
+    {
+        cardOnScreen = new DisplayedCard(displayedInfo);
+        button = cardOnScreen.cardDisplay.GetComponent<Button>();
+
+    }
+
+    public void Button_clicked()
+    {
+        Encounter.playerHand.PlayFromHand(this);
+    }
 
     public class DisplayedCard
     {
@@ -50,6 +63,7 @@ public abstract class Card
         private RectTransform cardPosition;
         private CanvasRenderer cardRenderer;
         private UnityEngine.UI.Image cardImage;
+        private Button button;
         //card Name
         private RectTransform namePosition;
         private CanvasRenderer nameRenderer;
@@ -67,6 +81,7 @@ public abstract class Card
             cardPosition = cardDisplay.GetComponent<RectTransform>();
             cardRenderer = cardDisplay.GetComponent<CanvasRenderer>();
             cardImage = cardDisplay.GetComponent<UnityEngine.UI.Image>();
+            button = cardDisplay.GetComponent<Button>();
 
             RectTransform[] childPositions = cardDisplay.GetComponentsInChildren<RectTransform>();
             namePosition = childPositions[0];
@@ -104,8 +119,8 @@ public abstract class Card
             //Instantiate object
             //Object.Instantiate(cardDisplay);
 
-
         }
+
 
         public void ChangeTransform(Transform newTransform)
         {

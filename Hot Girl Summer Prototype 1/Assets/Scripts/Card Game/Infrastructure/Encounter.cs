@@ -29,13 +29,15 @@ public class Encounter
 
     public void ChangeTurn()
     {
-
+        if (_isItPlayerTurn) cardGameFSM.TransitionTo<NPCTurn>();
+        else cardGameFSM.TransitionTo<PlayerTurn>();
     }
 
     public void OpponentEffect()
     {
         _npc.Effect();
         UpdateHandSize();
+        UpdateCardGameObjects();
     }
 
     //Called after changes to hand to make sure display represents actual cards in Hand
@@ -63,12 +65,52 @@ public class Encounter
 
     public class PlayerTurn : FiniteStateMachine<Encounter>.State
     {
+        public override void OnEnter()
+        {
+            Encounter._isItPlayerTurn = true;
+            Encounter.playerActions = 1;
+            playerDeck.Draw();
+            playerDeck.Draw();
+            playerDeck.Draw();
 
+            foreach (Card card in Encounter.playerHand.cardsInHand)
+            {
+                card.button.clicked += card.Button_clicked;
+            }
+        }
+
+        public override void OnExit()
+        {
+            foreach (Card card in Encounter.playerHand.cardsInHand)
+            {
+                card.button.clicked -= card.Button_clicked;
+            }
+        }
+
+        public override void Update()
+        {
+            base.Update();
+        }
     }
 
     public class NPCTurn : FiniteStateMachine<Encounter>.State
     {
+        public override void OnEnter()
+        {
+            Encounter._isItPlayerTurn = false;
+            Services.encounter.OpponentEffect();
+            Services.encounter.ChangeTurn();
+        }
 
+        public override void OnExit()
+        {
+            base.OnExit();
+        }
+
+        public override void Update()
+        {
+            base.Update();
+        }
     }
 
     public class WaitForInput : FiniteStateMachine<Encounter>.State
