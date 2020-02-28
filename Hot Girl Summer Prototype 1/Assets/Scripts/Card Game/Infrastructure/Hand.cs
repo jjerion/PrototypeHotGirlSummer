@@ -7,6 +7,7 @@ public class Hand
     public List<Card> cardsInHand;
     public List<GameObject> cardSprites;
 
+
     public Card PlayFromHand(Card cardToPlay)
     {
         cardToPlay.Effect();
