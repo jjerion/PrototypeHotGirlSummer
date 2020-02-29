@@ -5,9 +5,9 @@ using UnityEngine;
 public class Encounter
 {
     //Static elements in an encounter
-    public static readonly Deck playerDeck;
-    public static readonly Discard playerDiscard;
-    public static readonly Hand playerHand;
+    public static  Deck playerDeck;
+    public static  Discard playerDiscard;
+    public static  Hand playerHand;
     public static bool _isItPlayerTurn;
     private static NPC _npc;
     public static Canvas cardGUI;
@@ -20,6 +20,18 @@ public class Encounter
 
     //Remaining actions in a player turn
     public static int playerActions;
+
+    public Encounter(NPC npc)
+    {
+        playerDeck = new Deck();
+        playerDiscard = new Discard();
+        playerHand = new Hand();
+        _npc = npc;
+        cardGUI = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
+        cardGameFSM = new FiniteStateMachine<Encounter>(this);
+        cardGameFSM.TransitionTo<PlayerTurn>();
+
+    }
 
     public void Play(Card cardToPlay)
     {
@@ -115,6 +127,25 @@ public class Encounter
 
     public class WaitForInput : FiniteStateMachine<Encounter>.State
     {
+        public override void OnEnter()
+        {
+            foreach (Card card in Encounter.playerHand.cardsInHand)
+            {
+                card.button.clicked += card.Button_clicked;
+            }
+        }
 
+        public override void OnExit()
+        {
+            foreach (Card card in Encounter.playerHand.cardsInHand)
+            {
+                card.button.clicked -= card.Button_clicked;
+            }
+        }
+
+        public override void Update()
+        {
+            base.Update();
+        }
     }
 }

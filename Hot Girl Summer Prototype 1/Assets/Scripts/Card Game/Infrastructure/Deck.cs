@@ -6,7 +6,13 @@ public class Deck
 {
     
     public List<Card> cardsInDeck;
-    public DeckList DeckList;
+    public DeckList deckList;
+
+    public Deck()
+    {
+        deckList = GameController.partyDeck;
+        cardsInDeck = deckList.allCards;
+    }
     
     public Card Draw()
     {
@@ -35,6 +41,14 @@ public class Deck
 
     public void Shuffle()
     {
+        List<Card> newList = new List<Card>();
+        newList = cardsInDeck;
+        for (int i = 0; i <cardsInDeck.Count; i++)
+        {
+            int temporaryInt = (int)Mathf.Floor(Random.Range(0, newList.Count));
+            cardsInDeck[i] = newList[temporaryInt];
+            newList.RemoveAt(temporaryInt);
+        }
 
     }
 
