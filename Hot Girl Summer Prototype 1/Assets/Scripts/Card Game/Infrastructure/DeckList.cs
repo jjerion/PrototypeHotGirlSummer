@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeckList
 {
     public List<Card> allCards;
-    public Card.VictoryPoints victoryPoints;
+    public static Card.VictoryPoints victoryPoints;
 
     public DeckList()
     {
