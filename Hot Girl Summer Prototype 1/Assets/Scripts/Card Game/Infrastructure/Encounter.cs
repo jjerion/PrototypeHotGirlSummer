@@ -10,7 +10,7 @@ public class Encounter
     public static  Hand playerHand;
     public static bool _isItPlayerTurn;
     private static NPC _npc;
-    public static Canvas cardGUI;
+    public static GameObject cardGUI;
     public static FiniteStateMachine<Encounter> cardGameFSM;
 
     //Constants for managing Hand GUI
@@ -26,10 +26,12 @@ public class Encounter
         playerDeck = new Deck();
         playerDiscard = new Discard();
         playerHand = new Hand();
+        Debug.Log("Created Hand, deck, discard");
         _npc = npc;
-        cardGUI = GameObject.FindGameObjectWithTag("HandZone").GetComponent<Canvas>();
+        cardGUI = GameObject.FindGameObjectWithTag("HandZone");
         cardGameFSM = new FiniteStateMachine<Encounter>(this);
         cardGameFSM.TransitionTo<PlayerTurn>();
+        Debug.Log("Transitioned to playerturn");
 
     }
 
@@ -56,23 +58,25 @@ public class Encounter
     public void UpdateHandSize()
     {
 
-        float handIncrement = (endOfHand - beginningOfHand) / (playerHand.handTransforms.Count + 1);
-        float xPosition = 0;
+        //float handIncrement = (endOfHand - beginningOfHand) / (playerHand.handTransforms.Count + 1);
+        //float xPosition = 0;
+        /*
         foreach (RectTransform cardInHand in playerHand.handTransforms)
         {
             xPosition += handIncrement;
             cardInHand.SetPositionAndRotation(new Vector3(beginningOfHand + xPosition, handYPosition, 0), Quaternion.identity);
         }
 
-
+    */
     }
 
     public void UpdateCardGameObjects()
     {
+        /*
         for (int i = 0; i < playerHand.cardsInHand.Count; i++)
         {
             playerHand.cardsInHand[i].cardOnScreen.cardDisplay.transform.SetPositionAndRotation(playerHand.handTransforms[i].position, Quaternion.identity);
-        }
+        } */
     }
 
     public class PlayerTurn : FiniteStateMachine<Encounter>.State

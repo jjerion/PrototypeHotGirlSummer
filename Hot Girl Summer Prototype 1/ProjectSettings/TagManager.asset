@@ -16,6 +16,7 @@ TagManager:
   - Head
   - FF_Element
   - HandZone
+  - Canvas
   layers:
   - Default
   - TransparentFX
