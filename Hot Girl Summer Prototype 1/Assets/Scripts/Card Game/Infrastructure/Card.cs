@@ -44,11 +44,7 @@ public abstract class Card
 
     public Card()
     {
-        testObject = new GameObject();
-        cardOnScreen = testObject.AddComponent<DisplayedCard>();
-        cardOnScreen.InitializeComponent(this);
-        DisplayedCard cardInScene = cardOnScreen.cardDisplay.AddComponent<DisplayedCard>();
-        cardInScene = cardOnScreen;
+        cardOnScreen = new DisplayedCard(this);
     }
 
 

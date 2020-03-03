@@ -5,8 +5,13 @@ using UnityEngine;
 public class Hand
 {
     public List<Card> cardsInHand;
-    public List<RectTransform> handTransforms;
+    //public List<RectTransform> handTransforms;
 
+    public Hand()
+    {
+        cardsInHand = new List<Card>();
+
+    }
 
     public Card PlayFromHand(Card cardToPlay)
     {
@@ -39,12 +44,19 @@ public class Hand
     public Card AddToHand(Card cardToAdd)
     {
         cardsInHand.Add(cardToAdd);
-        handTransforms.Add(new RectTransform());
+        //handTransforms.Add(new RectTransform());
         Services.encounter.UpdateHandSize();
         Services.encounter.UpdateCardGameObjects();
-        DisplayedCard cardToDisplay = cardToAdd.cardOnScreen;
-        Object.Instantiate<GameObject>(cardToDisplay.cardDisplay, Vector3.zero, Quaternion.identity, Encounter.cardGUI.transform);
-        cardToDisplay.GetComponent<DisplayedCard>().card = cardToAdd;
+
+        Debug.Assert(cardToAdd != null, "cardToAdd is null");
+        Debug.Assert(cardToAdd.cardOnScreen != null, "cardOnScreen is null");
+        Debug.Assert(cardToAdd.cardOnScreen.cardDisplay != null, "cardDisplay is null");
+
+        Debug.Log(Encounter.cardGUI.gameObject.name);
+
+        GameObject newGameObject = Object.Instantiate<GameObject>(cardToAdd.cardOnScreen.cardDisplay, Vector3.zero, Quaternion.identity, Encounter.cardGUI.transform);
+        Debug.Log("instantiated object");
+        newGameObject.AddComponent<CardIdentifier>().whichCardIsThis = cardToAdd;
         return cardToAdd;
     }
 }

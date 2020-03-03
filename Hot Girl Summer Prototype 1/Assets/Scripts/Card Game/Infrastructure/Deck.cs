@@ -11,13 +11,17 @@ public class Deck
     public Deck()
     {
         deckList = GameController.partyDeck;
+        cardsInDeck = new List<Card>();
         cardsInDeck = deckList.allCards;
     }
     
     public Card Draw()
     {
+        Debug.Assert(cardsInDeck.Count > 0, "Assertion Failed: Deck is empty.");
         var cardToDraw = cardsInDeck[0];
         cardsInDeck.RemoveAt(0);
+        Encounter.playerHand.AddToHand(cardToDraw);
+        Debug.Log("drew card");
         return Encounter.playerHand.AddToHand(cardToDraw);
     }
     
