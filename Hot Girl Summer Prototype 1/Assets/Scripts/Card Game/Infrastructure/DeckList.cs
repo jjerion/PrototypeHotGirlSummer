@@ -7,6 +7,11 @@ public class DeckList
     public List<Card> allCards;
     public Card.VictoryPoints victoryPoints;
 
+    public DeckList()
+    {
+        allCards = new List<Card>();
+        
+    }
     public Card AddCard(Card cardToAdd)
     {
         allCards.Add(cardToAdd);

@@ -38,12 +38,17 @@ public abstract class Card
 
 
     public CardInfo displayedInfo;
+    public GameObject testObject;
     public DisplayedCard cardOnScreen;
     public abstract void Effect();
 
     public Card()
     {
-        cardOnScreen = new DisplayedCard(this);
+        testObject = new GameObject();
+        cardOnScreen = testObject.AddComponent<DisplayedCard>();
+        cardOnScreen.InitializeComponent(this);
+        DisplayedCard cardInScene = cardOnScreen.cardDisplay.AddComponent<DisplayedCard>();
+        cardInScene = cardOnScreen;
     }
 
 

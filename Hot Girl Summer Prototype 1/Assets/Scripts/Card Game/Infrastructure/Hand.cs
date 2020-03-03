@@ -42,8 +42,8 @@ public class Hand
         handTransforms.Add(new RectTransform());
         Services.encounter.UpdateHandSize();
         Services.encounter.UpdateCardGameObjects();
-        GameObject cardToDisplay = cardToAdd.cardOnScreen.cardDisplay;
-        Object.Instantiate<GameObject>(cardToAdd.cardOnScreen.cardDisplay, Vector3.zero, Quaternion.identity, Encounter.cardGUI.transform);
+        DisplayedCard cardToDisplay = cardToAdd.cardOnScreen;
+        Object.Instantiate<GameObject>(cardToDisplay.cardDisplay, Vector3.zero, Quaternion.identity, Encounter.cardGUI.transform);
         cardToDisplay.GetComponent<DisplayedCard>().card = cardToAdd;
         return cardToAdd;
     }
