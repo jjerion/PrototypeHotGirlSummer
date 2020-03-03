@@ -27,7 +27,7 @@ public class Encounter
         playerDiscard = new Discard();
         playerHand = new Hand();
         _npc = npc;
-        cardGUI = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
+        cardGUI = GameObject.FindGameObjectWithTag("HandZone").GetComponent<Canvas>();
         cardGameFSM = new FiniteStateMachine<Encounter>(this);
         cardGameFSM.TransitionTo<PlayerTurn>();
 
@@ -87,7 +87,6 @@ public class Encounter
 
             foreach (Card card in Encounter.playerHand.cardsInHand)
             {
-                card.button.clicked += card.Button_clicked;
             }
         }
 
@@ -95,7 +94,6 @@ public class Encounter
         {
             foreach (Card card in Encounter.playerHand.cardsInHand)
             {
-                card.button.clicked -= card.Button_clicked;
             }
         }
 
@@ -131,7 +129,6 @@ public class Encounter
         {
             foreach (Card card in Encounter.playerHand.cardsInHand)
             {
-                card.button.clicked += card.Button_clicked;
             }
         }
 
@@ -139,7 +136,6 @@ public class Encounter
         {
             foreach (Card card in Encounter.playerHand.cardsInHand)
             {
-                card.button.clicked -= card.Button_clicked;
             }
         }
 
