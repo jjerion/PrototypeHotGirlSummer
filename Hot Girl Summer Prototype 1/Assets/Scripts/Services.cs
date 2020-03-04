@@ -7,6 +7,7 @@ public static class Services
 
     public static GameController GC;
     public static Encounter encounter;
+    public static EventManager eventManager;
     //public static InputManager input;
 
 }

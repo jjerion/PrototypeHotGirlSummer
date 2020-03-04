@@ -18,6 +18,7 @@ public class Chill : Card
     {
 
         //THOMAS HELP idk what to do here to add calm vibe point next turn
+
         Debug.Log("played Chill");
     }
 }

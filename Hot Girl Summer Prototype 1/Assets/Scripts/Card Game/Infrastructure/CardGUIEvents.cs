@@ -9,6 +9,7 @@ public class CardGUIEvents : EventTrigger
 
     private Transform startingPosition;
     public static Rect playableCardZone;
+    public static Card cardSelectedByPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,13 +43,27 @@ public class CardGUIEvents : EventTrigger
     public override void OnDrop(PointerEventData pointerEvent)
     {
         Debug.Log("No longer dragging");
-        if (playableCardZone.Contains(pointerEvent.position) && GetComponent<CardIdentifier>().whichCardIsThis.displayedInfo.isPlayable)
+        if (Encounter.cardGameFSM.CurrentState.GetType() == typeof(Encounter.PlayerTurn))
         {
-            Encounter.playerHand.PlayFromHand(GetComponent<CardIdentifier>().whichCardIsThis);
+            if (playableCardZone.Contains(pointerEvent.position) && GetComponent<CardIdentifier>().whichCardIsThis.displayedInfo.isPlayable)
+            {
+                Encounter.playerHand.PlayFromHand(GetComponent<CardIdentifier>().whichCardIsThis);
+            }
+            else
+            {
+                gameObject.transform.SetPositionAndRotation(startingPosition.position, Quaternion.identity);
+            }
         }
-        else
+        else if (Encounter.cardGameFSM.CurrentState.GetType() == typeof(Encounter.WaitForInput))
         {
-            gameObject.transform.SetPositionAndRotation(startingPosition.position, Quaternion.identity);
+            if (playableCardZone.Contains(pointerEvent.position))
+            {
+                cardSelectedByPlayer = GetComponent<CardIdentifier>().whichCardIsThis;
+            }
+            else
+            {
+                gameObject.transform.SetPositionAndRotation(startingPosition.position, Quaternion.identity);
+            }
         }
     }
 }

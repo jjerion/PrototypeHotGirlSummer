@@ -15,6 +15,7 @@ public class Dance : Card
         displayedInfo.text = "Immediately add one Bubbly Victory Card to your discard pile.";
         displayedInfo.art = Resources.Load<Sprite>("");
 
+        InitializeCardGameObject();
 
     }
     public override void Effect()

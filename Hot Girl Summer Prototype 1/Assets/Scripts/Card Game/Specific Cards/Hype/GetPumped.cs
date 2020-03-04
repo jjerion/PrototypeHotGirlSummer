@@ -18,5 +18,25 @@ public class GetPumped : Card
     {
         Encounter.playerActions = Encounter.playerActions + 2; //add two actions
         //allow player to choose a card to discard
+
+        //First, Register StopWaitingForInput to the event CardDiscarded
+        Services.eventManager.Register<CardDiscarded>(Encounter.WaitForInput.StopWaitingForInput);
+        
+        //Next, set the delegate whatAmIWaitingFor to the behavior you want--Discard one card in this case
+        Encounter.WaitForInput.whatAmIWaitingFor = DiscardOneCard;
+        
+        //Finally, transition into the state WaitForInput
+        Encounter.cardGameFSM.TransitionTo<Encounter.WaitForInput>();
+        
+    }
+
+    public void DiscardOneCard()
+    {
+        if(CardGUIEvents.cardSelectedByPlayer != null)
+        {
+            Encounter.playerHand.Discard(CardGUIEvents.cardSelectedByPlayer);
+            CardGUIEvents.cardSelectedByPlayer = null;
+            Encounter.cardGameFSM.TransitionTo<Encounter.PlayerTurn>();
+        }
     }
 }

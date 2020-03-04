@@ -105,6 +105,8 @@ public class Encounter
         {
             base.Update();
         }
+
+        
     }
 
     public class NPCTurn : FiniteStateMachine<Encounter>.State
@@ -129,11 +131,11 @@ public class Encounter
 
     public class WaitForInput : FiniteStateMachine<Encounter>.State
     {
+        public delegate void CheckingForInput();
+        public static CheckingForInput whatAmIWaitingFor;
         public override void OnEnter()
         {
-            foreach (Card card in Encounter.playerHand.cardsInHand)
-            {
-            }
+            //Services.eventManager.Register<conditionToAdvance>(Encounter.cardGameFSM.StopWaitingForInput);
         }
 
         public override void OnExit()
@@ -145,7 +147,21 @@ public class Encounter
 
         public override void Update()
         {
-            base.Update();
+            //ExecuteDelegateFunction(whatAmIWaitingFor);
+            whatAmIWaitingFor();
         }
+
+        //UNUSED for time being 
+        #region
+        public static void StopWaitingForInput(HotGirlEvent e)
+        {
+            cardGameFSM.TransitionTo<PlayerTurn>();
+        }
+
+        public void ExecuteDelegateFunction(CheckingForInput function)
+        {
+            function();
+        }
+        #endregion
     }
 }
