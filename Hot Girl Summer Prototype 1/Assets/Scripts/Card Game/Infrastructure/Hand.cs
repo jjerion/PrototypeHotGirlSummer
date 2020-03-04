@@ -15,6 +15,7 @@ public class Hand
 
     public Card PlayFromHand(Card cardToPlay)
     {
+        Encounter.playerActions--;
         cardsInHand.Remove(cardToPlay);
 
         //handTransforms.RemoveAt(0);

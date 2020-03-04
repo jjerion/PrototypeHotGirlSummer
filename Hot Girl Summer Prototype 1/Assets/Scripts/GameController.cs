@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Services.GC = this;
+        Services.eventManager = new EventManager();
+
         partyDeck = new DeckList();
         nextNPC = new Kelly();
         //Purely for testing card game

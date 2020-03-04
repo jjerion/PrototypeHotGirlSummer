@@ -21,6 +21,17 @@ public class PrivateTalk : Card
         var newCard = new Chill();
         Encounter.playerDiscard.AddToDiscard(newCard);
         //THOMAS PLS HELP ME ADD SOME CODE THAT ALLOWS YOU TO PLAY YOUR NEXT ACTION CARD TWICE.
+
+        //Tells eventManager to execute PlayActionAgain when an action is played
+        Services.eventManager.Register<ActionCardPlayed>(PlayActionAgain);
+
         Debug.Log("played Private Talk");
+    }
+
+    public void PlayActionAgain(HotGirlEvent aCardWasPlayed)
+    {
+        ActionCardPlayed actionCardEvent = (ActionCardPlayed)aCardWasPlayed;
+        Services.eventManager.Unregister<ActionCardPlayed>(PlayActionAgain);
+        Services.encounter.Play(actionCardEvent.cardPlayed);
     }
 }

@@ -8,12 +8,12 @@ public class CardGUIEvents : EventTrigger
 {
 
     private Transform startingPosition;
-    public static Rect playableCardZone;
+    public static RectTransform playableCardZone;
     public static Card cardSelectedByPlayer;
     // Start is called before the first frame update
     void Start()
     {
-        playableCardZone = GameObject.Find("PlayableCardZone").GetComponent<RectTransform>().rect;
+        playableCardZone = GameObject.Find("PlayableCardZone").GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -40,7 +40,6 @@ public class CardGUIEvents : EventTrigger
     public override void OnDrag(PointerEventData pointerEvent)
     {
 
-        Debug.Log("Dragging card");
         gameObject.transform.SetPositionAndRotation(pointerEvent.position, Quaternion.identity);
 
     }
@@ -50,12 +49,16 @@ public class CardGUIEvents : EventTrigger
     {
         Debug.Log("No longer dragging");
         Debug.Log(playableCardZone);
+        Debug.Log(Encounter.cardGameFSM.CurrentState.GetType());
         if (Encounter.cardGameFSM.CurrentState.GetType() == typeof(Encounter.PlayerTurn))
         {
             Debug.Log(gameObject.transform.localPosition);
-            Debug.Assert(playableCardZone.Contains(gameObject.transform.localPosition), "Assertion failed: Rect contains GameObject");
+            Debug.Assert(playableCardZone.rect.Contains(gameObject.transform.localPosition), "Assertion failed: Rect contains GameObject");
             Debug.Assert(GetComponent<CardIdentifier>().whichCardIsThis.displayedInfo.isPlayable, "Assertion failed: Card is playable");
-            if (playableCardZone.Contains(gameObject.transform.localPosition) && GetComponent<CardIdentifier>().whichCardIsThis.displayedInfo.isPlayable)
+
+            Debug.Log(pointerEvent.position);
+            Debug.Log(playableCardZone.InverseTransformPoint(pointerEvent.position));
+            if (playableCardZone.rect.Contains(playableCardZone.InverseTransformPoint(pointerEvent.position)) && GetComponent<CardIdentifier>().whichCardIsThis.displayedInfo.isPlayable)
             {
                 Debug.Log("I'm gonna play a card");
                 Encounter.playerHand.PlayFromHand(GetComponent<CardIdentifier>().whichCardIsThis);
@@ -67,7 +70,7 @@ public class CardGUIEvents : EventTrigger
         }
         else if (Encounter.cardGameFSM.CurrentState.GetType() == typeof(Encounter.WaitForInput))
         {
-            if (playableCardZone.Contains(gameObject.transform.localPosition))
+            if (playableCardZone.rect.Contains(playableCardZone.InverseTransformPoint(pointerEvent.position)))
             {
                 cardSelectedByPlayer = GetComponent<CardIdentifier>().whichCardIsThis;
             }
