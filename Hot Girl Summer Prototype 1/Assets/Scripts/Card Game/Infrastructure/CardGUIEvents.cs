@@ -32,21 +32,32 @@ public class CardGUIEvents : EventTrigger
         Debug.Log("No longer hovering");
     }
 
+    public override void OnBeginDrag(PointerEventData eventData)
+    {
+        Debug.Log("Begin drag");
+        startingPosition = gameObject.transform;
+    }
     public override void OnDrag(PointerEventData pointerEvent)
     {
-        startingPosition = gameObject.transform;
+
         Debug.Log("Dragging card");
         gameObject.transform.SetPositionAndRotation(pointerEvent.position, Quaternion.identity);
 
     }
 
-    public override void OnDrop(PointerEventData pointerEvent)
+
+    public override void OnEndDrag(PointerEventData pointerEvent)
     {
         Debug.Log("No longer dragging");
+        Debug.Log(playableCardZone);
         if (Encounter.cardGameFSM.CurrentState.GetType() == typeof(Encounter.PlayerTurn))
         {
-            if (playableCardZone.Contains(pointerEvent.position) && GetComponent<CardIdentifier>().whichCardIsThis.displayedInfo.isPlayable)
+            Debug.Log(gameObject.transform.localPosition);
+            Debug.Assert(playableCardZone.Contains(gameObject.transform.localPosition), "Assertion failed: Rect contains GameObject");
+            Debug.Assert(GetComponent<CardIdentifier>().whichCardIsThis.displayedInfo.isPlayable, "Assertion failed: Card is playable");
+            if (playableCardZone.Contains(gameObject.transform.localPosition) && GetComponent<CardIdentifier>().whichCardIsThis.displayedInfo.isPlayable)
             {
+                Debug.Log("I'm gonna play a card");
                 Encounter.playerHand.PlayFromHand(GetComponent<CardIdentifier>().whichCardIsThis);
             }
             else
@@ -56,7 +67,7 @@ public class CardGUIEvents : EventTrigger
         }
         else if (Encounter.cardGameFSM.CurrentState.GetType() == typeof(Encounter.WaitForInput))
         {
-            if (playableCardZone.Contains(pointerEvent.position))
+            if (playableCardZone.Contains(gameObject.transform.localPosition))
             {
                 cardSelectedByPlayer = GetComponent<CardIdentifier>().whichCardIsThis;
             }

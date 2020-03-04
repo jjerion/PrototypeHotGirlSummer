@@ -38,7 +38,6 @@ public class Encounter
     public void Play(Card cardToPlay)
     {
         cardToPlay.Effect();
-        UpdateHandSize();
     }
 
     public void ChangeTurn()
@@ -53,7 +52,8 @@ public class Encounter
         UpdateHandSize();
         UpdateCardGameObjects();
     }
-
+    //No longer being used
+    #region
     //Called after changes to hand to make sure display represents actual cards in Hand
     public void UpdateHandSize()
     {
@@ -78,6 +78,10 @@ public class Encounter
             playerHand.cardsInHand[i].cardOnScreen.cardDisplay.transform.SetPositionAndRotation(playerHand.handTransforms[i].position, Quaternion.identity);
         } */
     }
+    #endregion
+
+    //Card Game Finite State Machine and States
+    #region
 
     public class PlayerTurn : FiniteStateMachine<Encounter>.State
     {
@@ -150,6 +154,7 @@ public class Encounter
             //ExecuteDelegateFunction(whatAmIWaitingFor);
             whatAmIWaitingFor();
         }
+        
 
         //UNUSED for time being 
         #region
@@ -164,4 +169,6 @@ public class Encounter
         }
         #endregion
     }
+
+    #endregion
 }

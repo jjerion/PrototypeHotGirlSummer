@@ -20,7 +20,7 @@ public class Hand
         //handTransforms.RemoveAt(0);
         //Services.encounter.UpdateHandSize();
 
-        GameObject.Destroy(cardToPlay.cardGameObject);
+        cardToPlay.cardGameObject.SetActive(false);
         //Services.encounter.UpdateCardGameObjects();
         Services.encounter.Play(cardToPlay);
 
@@ -54,10 +54,13 @@ public class Hand
 
         Debug.Log(Encounter.cardGUI.gameObject.name);
 
-        GameObject newGameObject = Object.Instantiate<GameObject>(cardToAdd.cardGameObject, Vector3.zero, Quaternion.identity, Encounter.cardGUI.transform);
-        newGameObject.SetActive(true);
-        Debug.Log("instantiated object");
-        newGameObject.AddComponent<CardIdentifier>().whichCardIsThis = cardToAdd;
+        //GameObject newGameObject = Object.Instantiate<GameObject>(cardToAdd.cardGameObject, Vector3.zero, Quaternion.identity, Encounter.cardGUI.transform);
+        //newGameObject.SetActive(true);
+        //Debug.Log(newGameObject.name);
+        cardToAdd.cardGameObject.transform.SetParent(Encounter.cardGUI.transform);
+        cardToAdd.cardGameObject.SetActive(true);
+        Debug.Log("Activated object");
+        //newGameObject.AddComponent<CardIdentifier>().whichCardIsThis = cardToAdd;
         return cardToAdd;
     }
 }

@@ -12,24 +12,28 @@ public class GetPumped : Card
         displayedInfo.isPlayable = true;
         displayedInfo.text = "Gain +2 Actions this turn. Discard 1 card from your hand.";
         displayedInfo.art = Resources.Load<Sprite>("");
+
+        InitializeCardGameObject();
     }
 
     public override void Effect()
     {
+        Debug.Log("Playing Get Pumped");
         Encounter.playerActions = Encounter.playerActions + 2; //add two actions
-        //allow player to choose a card to discard
 
-        //First, Register StopWaitingForInput to the event CardDiscarded
-        Services.eventManager.Register<CardDiscarded>(Encounter.WaitForInput.StopWaitingForInput);
-        
-        //Next, set the delegate whatAmIWaitingFor to the behavior you want--Discard one card in this case
+
+        //Services.eventManager.Register<CardDiscarded>(Encounter.WaitForInput.StopWaitingForInput);
+
+        //allow player to choose a card to discard- IMPORTANT
+        //Set the delegate whatAmIWaitingFor to the behavior you want--Discard one card in this case
         Encounter.WaitForInput.whatAmIWaitingFor = DiscardOneCard;
         
-        //Finally, transition into the state WaitForInput
+        //Transition into the state WaitForInput
         Encounter.cardGameFSM.TransitionTo<Encounter.WaitForInput>();
         
     }
 
+    //This is the function you want to repeat while waiting
     public void DiscardOneCard()
     {
         if(CardGUIEvents.cardSelectedByPlayer != null)

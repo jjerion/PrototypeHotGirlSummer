@@ -36,7 +36,7 @@ public abstract class Card
     }
     #endregion
 
-    public GameObject cardGameObject = new GameObject();
+    public GameObject cardGameObject;
     public CardInfo displayedInfo;
     //public DisplayedCard cardOnScreen;
     public abstract void Effect();
@@ -45,12 +45,11 @@ public abstract class Card
     {
         
 
-        
     }
 
     public void InitializeCardGameObject()
     {
-        cardGameObject = Resources.Load<GameObject>("Cards/Basic Card");
+        cardGameObject = Object.Instantiate(Resources.Load<GameObject>("Cards/Basic Card"));
         cardGameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text = displayedInfo.cardName;
         cardGameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = displayedInfo.text;
 
@@ -72,6 +71,8 @@ public abstract class Card
                 break;
 
         }
+
+        cardGameObject.AddComponent<CardIdentifier>().whichCardIsThis = this;
     }
 
 

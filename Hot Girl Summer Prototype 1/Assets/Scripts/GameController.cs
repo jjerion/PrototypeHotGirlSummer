@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
         nextNPC = new Kelly();
         //Purely for testing card game
         partyDeck.AddCard(new Bubbly());
-        partyDeck.AddCard(new Bubbly());
+        partyDeck.AddCard(new GetPumped());
         partyDeck.AddCard(new Dance());
         Debug.Log("Added cards");
         _gameFSM = new FiniteStateMachine<GameController>(this);
