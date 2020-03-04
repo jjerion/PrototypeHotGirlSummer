@@ -24,7 +24,7 @@ public class DialogueTrigger : MonoBehaviour
         if (collision.gameObject.tag == "Kelly")
         {
             Debug.Log("hit kelly");
-            myFlowchart.ExecuteBlock("Kelly Convo 1");
+            myFlowchart.ExecuteBlock("Kelly Problem");
         }
     }
 }
