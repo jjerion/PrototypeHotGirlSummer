@@ -36,17 +36,43 @@ public abstract class Card
     }
     #endregion
 
-
+    public GameObject cardGameObject = new GameObject();
     public CardInfo displayedInfo;
-    public GameObject testObject;
-    public DisplayedCard cardOnScreen;
+    //public DisplayedCard cardOnScreen;
     public abstract void Effect();
 
     public Card()
     {
-        cardOnScreen = new DisplayedCard(this);
+        
+
+        
     }
 
+    public void InitializeCardGameObject()
+    {
+        cardGameObject = Resources.Load<GameObject>("Cards/Basic Card");
+        cardGameObject.GetComponentsInChildren<TextMeshProUGUI>()[0].text = displayedInfo.cardName;
+        cardGameObject.GetComponentsInChildren<TextMeshProUGUI>()[1].text = displayedInfo.text;
+
+        UnityEngine.UI.Image cardBackgroundImage = cardGameObject.GetComponent<UnityEngine.UI.Image>();
+        cardGameObject.name = displayedInfo.cardName;
+
+        switch (displayedInfo.type)
+        {
+            case (int)Card.Vibes.Bubbly:
+                cardBackgroundImage.sprite = Resources.Load<Sprite>("Cards/Bubbly_Background");
+                break;
+            case (int)Card.Vibes.Calm:
+                cardBackgroundImage.sprite = Resources.Load<Sprite>("Cards/Calm_Background");
+                break;
+            case (int)Card.Vibes.Hype:
+                cardBackgroundImage.sprite = Resources.Load<Sprite>("Cards/Hype_Background");
+                break;
+            default:
+                break;
+
+        }
+    }
 
 
 }
