@@ -30,7 +30,7 @@ public class Encounter
         playerDiscard = new Discard();
         playerHand = new Hand();
         Debug.Log("Created Hand, deck, discard");
-        _npc = npc;
+        Encounter._npc = npc;
         cardGUI = GameObject.FindGameObjectWithTag("HandZone");
         endTurnButton = GameObject.Find("EndPlayerTurn");
         endTurnButton.SetActive(false);
@@ -54,14 +54,15 @@ public class Encounter
     public void ChangeTurn()
     {
         if (_isItPlayerTurn) cardGameFSM.TransitionTo<NPCTurn>();
-        else cardGameFSM.TransitionTo<PlayerTurn>();
+        else cardGameFSM.TransitionTo<BeginningOfTurn>();
     }
 
     public void OpponentEffect()
     {
         _npc.Effect();
-        UpdateHandSize();
-        UpdateCardGameObjects();
+        NPCTakesAction recentAction = new NPCTakesAction( _npc);
+        Services.eventManager.Fire((HotGirlEvent)recentAction);
+
     }
     //No longer being used
     #region

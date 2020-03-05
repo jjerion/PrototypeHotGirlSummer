@@ -84,6 +84,17 @@ public class ActionCardPlayed : HotGirlEvent
     }
 }
 
+//Event for NPC actions
+public class NPCTakesAction : HotGirlEvent
+{
+    public NPC npcThatActed;
+
+    public NPCTakesAction(NPC currentNPC)
+    {
+        npcThatActed = currentNPC;
+    }
+}
+
 //May be unnecessary now
 public class PlayerInputRequested : HotGirlEvent
 {

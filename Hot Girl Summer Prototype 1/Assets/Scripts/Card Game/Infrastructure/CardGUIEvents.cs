@@ -48,8 +48,9 @@ public class CardGUIEvents : EventTrigger
     public override void OnEndDrag(PointerEventData pointerEvent)
     {
         Debug.Log("No longer dragging");
-        Debug.Log(playableCardZone);
         Debug.Log(Encounter.cardGameFSM.CurrentState.GetType());
+
+        //What to do if it's the player's main phase in their turn
         if (Encounter.cardGameFSM.CurrentState.GetType() == typeof(Encounter.PlayerTurn))
         {
             Debug.Log(gameObject.transform.localPosition);
@@ -68,6 +69,8 @@ public class CardGUIEvents : EventTrigger
                 gameObject.transform.SetPositionAndRotation(startingPosition.position, Quaternion.identity);
             }
         }
+        
+        //What to do if the game is waiting for players to pick a card
         else if (Encounter.cardGameFSM.CurrentState.GetType() == typeof(Encounter.WaitForInput))
         {
             if (playableCardZone.rect.Contains(playableCardZone.InverseTransformPoint(pointerEvent.position)))

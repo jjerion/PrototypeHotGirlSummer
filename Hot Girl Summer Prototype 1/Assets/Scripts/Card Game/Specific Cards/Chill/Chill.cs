@@ -18,7 +18,13 @@ public class Chill : Card
     {
 
         //THOMAS HELP idk what to do here to add calm vibe point next turn
-
+        Encounter.BeginningOfTurn.whatHappensAtBeginningOfTurn = AddOneCalm;
         Debug.Log("played Chill");
+    }
+
+    public void AddOneCalm()
+    {
+        Encounter.playerDiscard.AddToDiscard(new Calm());
+        Encounter.BeginningOfTurn.whatHappensAtBeginningOfTurn = null;
     }
 }

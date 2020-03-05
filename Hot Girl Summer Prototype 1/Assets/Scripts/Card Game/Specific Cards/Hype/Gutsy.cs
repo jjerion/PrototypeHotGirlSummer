@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gutsy : Card
 {
+
+    public Card[] hypeCards = new Card[2];
     public Gutsy()
     {
         displayedInfo.cardName = "Gutsy";
@@ -16,10 +18,38 @@ public class Gutsy : Card
 
     public override void Effect()
     {
-        var newCard = new Hype(); //add two hype cards
-        Encounter.playerDiscard.AddToDiscard(newCard);
-        Encounter.playerDiscard.AddToDiscard(newCard);
+        hypeCards[0] = new Hype(); //add two hype cards
+        hypeCards[1] = new Hype();
+        Encounter.playerDiscard.AddToDiscard(hypeCards[0]);
+        Encounter.playerDiscard.AddToDiscard(hypeCards[1]);
+
+        Encounter.BeginningOfTurn.whatHappensAtBeginningOfTurn = RemoveTwoHype;
 
         //set to destroy cards after opponent's turn
+
+    }
+
+    public void RemoveTwoHype()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            if (Encounter.playerDiscard.cardsInDiscard.Contains(hypeCards[i]))
+            {
+                Encounter.playerDiscard.cardsInDiscard.Remove(hypeCards[i]);
+                continue;
+            }
+            else if (Encounter.playerDeck.cardsInDeck.Contains(hypeCards[i]))
+            {
+                Encounter.playerDeck.cardsInDeck.Remove(hypeCards[i]);
+                continue;
+            }
+            else if (Encounter.playerHand.cardsInHand.Contains(hypeCards[i]))
+            {
+                Encounter.playerHand.cardsInHand.Remove(hypeCards[i]);
+                continue;
+            }
+            else break;
+        }
+        Encounter.BeginningOfTurn.whatHappensAtBeginningOfTurn = null;
     }
 }

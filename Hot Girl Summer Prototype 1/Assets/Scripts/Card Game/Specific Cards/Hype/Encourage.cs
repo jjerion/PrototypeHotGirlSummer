@@ -16,7 +16,15 @@ public class Encourage : Card
 
     public override void Effect()
     {
+        Services.eventManager.Register<NPCTakesAction>(TakeActionAgain);
         Debug.Log("You are very cool.");        
         //tells game to have NPC go twice next turn
+    }
+
+    public void TakeActionAgain(HotGirlEvent npcTakesAction)
+    {
+        NPCTakesAction npcActionEvent = (NPCTakesAction)npcTakesAction;
+        Services.eventManager.Unregister<NPCTakesAction>(TakeActionAgain);
+        Services.encounter.OpponentEffect();
     }
 }

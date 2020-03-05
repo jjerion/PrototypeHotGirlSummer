@@ -17,7 +17,16 @@ public class Deck
     
     public Card Draw()
     {
-        Debug.Assert(cardsInDeck.Count > 0, "Assertion Failed: Deck is empty.");
+        if (cardsInDeck.Count == 0)
+        {
+            foreach (Card cardInDiscard in Encounter.playerDiscard.cardsInDiscard)
+            {
+                Encounter.playerDiscard.cardsInDiscard.Remove(cardInDiscard);
+                cardsInDeck.Add(cardInDiscard);
+            }
+
+            Shuffle(); 
+        }
         var cardToDraw = cardsInDeck[0];
         cardsInDeck.RemoveAt(0);
         //Encounter.playerHand.AddToHand(cardToDraw);

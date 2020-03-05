@@ -15,16 +15,20 @@ public class Hand
 
     public Card PlayFromHand(Card cardToPlay)
     {
-        Encounter.playerActions--;
-        cardsInHand.Remove(cardToPlay);
+        if(Encounter.playerActions > 0)
+        {
+            Encounter.playerActions--;
+            cardsInHand.Remove(cardToPlay);
 
-        //handTransforms.RemoveAt(0);
-        //Services.encounter.UpdateHandSize();
+            //handTransforms.RemoveAt(0);
+            //Services.encounter.UpdateHandSize();
 
-        cardToPlay.cardGameObject.SetActive(false);
-        //Services.encounter.UpdateCardGameObjects();
-        Services.encounter.Play(cardToPlay);
+            cardToPlay.cardGameObject.SetActive(false);
+            //Services.encounter.UpdateCardGameObjects();
+            Services.encounter.Play(cardToPlay);
 
+            
+        }
         return cardToPlay;
     }
 
