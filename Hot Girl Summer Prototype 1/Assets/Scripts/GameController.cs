@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -62,12 +63,10 @@ public class GameController : MonoBehaviour
         // cards right away. Feel free to uncomment if you want to test the card game, but be mindful.
         #region
         
-        partyDeck.AddCard(new Bubbly()); 
-        partyDeck.AddCard(new GetPumped());             //These lines add basic cards to the deck
+        partyDeck.AddCard(new Bubbly());              //These lines add basic cards to the deck
         partyDeck.AddCard(new Dance());
         partyDeck.AddCard(new Gutsy());
         partyDeck.AddCard(new PrivateTalk());
-        partyDeck.AddCard(new Chill());
         partyDeck.AddCard(new Chat());
         partyDeck.AddCard(new Encourage());
 
@@ -124,6 +123,7 @@ public class CardGame : FiniteStateMachine<GameController>.State
         {
             //If you have enough VP, the encounter ends
             TransitionTo<Story>();
+            SceneManager.LoadScene("SampleScene");
         }
 
         //If not, then the card Game Updates
