@@ -7,8 +7,12 @@ public class EndTurn : MonoBehaviour
 
     public void OnClick()
     {
-        Services.encounter.ChangeTurn();
-        gameObject.SetActive(false);
+        if (Encounter.cardGameFSM.CurrentState.GetType() == typeof(Encounter.PlayerTurn))
+        {
+            Services.encounter.ChangeTurn();
+            gameObject.SetActive(false);
+        }
+        
     }
     // Start is called before the first frame update
     void Start()

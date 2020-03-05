@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 
 
-public class Score_CardGame //not tested! :D
+public class Score_CardGame : MonoBehaviour //not tested! :D
 {
     private GameObject textObject; //where the score goes to
     private TextMeshProUGUI thisScoreboard; //tmp thingy
@@ -21,7 +21,7 @@ public class Score_CardGame //not tested! :D
     // Update is called once per frame
     void Update()
     {
-        sbVictoryPoints = DeckList.victoryPoints; //make scoreboard vp = deck vp
+        sbVictoryPoints = GameController.partyDeck.victoryPoints; //make scoreboard vp = deck vp
 
         //assign scoreboard values
         _sbTotal = sbVictoryPoints.totalPoints;

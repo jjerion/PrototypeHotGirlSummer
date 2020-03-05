@@ -14,6 +14,8 @@ public class PrivateTalk : Card
         displayedInfo.text = "Play your next action card twice. Add one Chill Victory Card to your discard.";
         displayedInfo.art = Resources.Load<Sprite>("");
 
+        InitializeCardGameObject();
+
 
     }
     public override void Effect()

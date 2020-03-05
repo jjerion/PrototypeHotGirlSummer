@@ -12,6 +12,8 @@ public class Chill : Card
         displayedInfo.isPlayable = true;
         displayedInfo.text = "Gain 1 Calm Vibe Point next turn.";
         displayedInfo.art = Resources.Load<Sprite>("");
+
+        InitializeCardGameObject();
     }
 
     public override void Effect()

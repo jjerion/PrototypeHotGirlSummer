@@ -26,14 +26,23 @@ public class Encounter
 
     public Encounter(NPC npc)
     {
+        //Creates Deck, Hand, and Discard
         playerDeck = new Deck();
         playerDiscard = new Discard();
         playerHand = new Hand();
+
+
         Debug.Log("Created Hand, deck, discard");
+
+        //Sets NPC for the encounter
         Encounter._npc = npc;
+
+        //Finds GameObjects in scene
         cardGUI = GameObject.FindGameObjectWithTag("HandZone");
         endTurnButton = GameObject.Find("EndPlayerTurn");
-        endTurnButton.SetActive(false);
+        //endTurnButton.SetActive(false);
+
+        //initializes FSM
         cardGameFSM = new FiniteStateMachine<Encounter>(this);
         cardGameFSM.TransitionTo<BeginningOfTurn>();
         Debug.Log("Transitioned to playerturn");
@@ -53,8 +62,15 @@ public class Encounter
 
     public void ChangeTurn()
     {
-        if (_isItPlayerTurn) cardGameFSM.TransitionTo<NPCTurn>();
-        else cardGameFSM.TransitionTo<BeginningOfTurn>();
+        if (_isItPlayerTurn)
+        {
+            _isItPlayerTurn = false;
+            cardGameFSM.TransitionTo<NPCTurn>();
+        }
+        else
+        {
+            cardGameFSM.TransitionTo<BeginningOfTurn>();
+        }
     }
 
     public void OpponentEffect()
@@ -110,7 +126,12 @@ public class Encounter
             }
 
             //These happen at the beginning of every turn
-            Encounter._isItPlayerTurn = true;
+            foreach(Card card in Encounter.playerDeck.cardsInDeck)
+            {
+                Debug.Log(card);
+            }
+
+            _isItPlayerTurn = true;
             Encounter.playerActions = 1;
             playerDeck.Draw();
             playerDeck.Draw();
@@ -140,11 +161,20 @@ public class Encounter
 
         public override void OnExit()
         {
-            if (whatHappensAtEndOfTurn != null)
+            
+            if (_isItPlayerTurn == false)
             {
-                whatHappensAtEndOfTurn();
+                while (Encounter.playerHand.cardsInHand.Count > 0)
+                {
+                    Encounter.playerHand.Discard(Encounter.playerHand.cardsInHand[0]);
+                }
 
+                if (whatHappensAtEndOfTurn != null)
+                {
+                    whatHappensAtEndOfTurn();
+                }
             }
+            
 
         }
 
@@ -164,9 +194,8 @@ public class Encounter
     {
         public override void OnEnter()
         {
-            Encounter._isItPlayerTurn = false;
             Services.encounter.OpponentEffect();
-            Services.encounter.ChangeTurn();
+            
         }
 
         public override void OnExit()
@@ -176,7 +205,7 @@ public class Encounter
 
         public override void Update()
         {
-            base.Update();
+            Services.encounter.ChangeTurn();
         }
     }
 
@@ -186,6 +215,7 @@ public class Encounter
         public static CheckingForInput whatAmIWaitingFor;
         public override void OnEnter()
         {
+            CardGUIEvents.cardSelectedByPlayer = null;
             //Services.eventManager.Register<conditionToAdvance>(Encounter.cardGameFSM.StopWaitingForInput);
         }
 
@@ -198,7 +228,6 @@ public class Encounter
 
         public override void Update()
         {
-            //ExecuteDelegateFunction(whatAmIWaitingFor);
             if (whatAmIWaitingFor != null)
             {
                 whatAmIWaitingFor();

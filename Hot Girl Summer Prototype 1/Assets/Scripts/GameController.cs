@@ -61,19 +61,24 @@ public class GameController : MonoBehaviour
         //PURELY FOR TESTING THE CARD ENCOUNTER SCENE. In the real game, we don't want to start playing
         // cards right away. Feel free to uncomment if you want to test the card game, but be mindful.
         #region
-        /*
+        
         partyDeck.AddCard(new Bubbly()); 
-        partyDeck.AddCard(new GetPumped());             These lines add basic cards to the deck
+        partyDeck.AddCard(new GetPumped());             //These lines add basic cards to the deck
         partyDeck.AddCard(new Dance());
+        partyDeck.AddCard(new Gutsy());
+        partyDeck.AddCard(new PrivateTalk());
+        partyDeck.AddCard(new Chill());
+        partyDeck.AddCard(new Chat());
+        partyDeck.AddCard(new Encourage());
 
 
         Debug.Log("Added cards");
 
 
-        _gameFSM = new FiniteStateMachine<GameController>(this); This line creates a state machine for 
+        _gameFSM = new FiniteStateMachine<GameController>(this); //This line creates a state machine for 
         _gameFSM.TransitionTo<CardGame>();
         Debug.Log("transitioned to card game");
-        */
+        
         #endregion
 
     }
@@ -89,8 +94,6 @@ public class GameController : MonoBehaviour
         _gameFSM.Update();
 
         
-        //Then the card Game Updates
-        Encounter.cardGameFSM.Update();
     }
 }
 // This is where the States for the Game Controller Finite State Machine are.
@@ -106,12 +109,26 @@ public class CardGame : FiniteStateMachine<GameController>.State
 
     public override void OnExit()
     {
-        base.OnExit();
+        Services.encounter = null;
+        
     }
 
     public override void Update()
     {
-        base.Update();
+        //Make sure the party deck is up to date
+        GameController.partyDeck.UpdateContents();
+        GameController.partyDeck.CalculateVictoryPoints();
+
+        //Now, check if Victory Point conditions are met
+        if (GameController.partyDeck.victoryPoints.totalPoints >= 10)
+        {
+            //If you have enough VP, the encounter ends
+            TransitionTo<Story>();
+        }
+
+        //If not, then the card Game Updates
+        Encounter.cardGameFSM.Update();
+        
     }
 }
 

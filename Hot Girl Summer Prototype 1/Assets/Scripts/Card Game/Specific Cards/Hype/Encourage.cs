@@ -12,6 +12,8 @@ public class Encourage : Card
         displayedInfo.isPlayable = true;
         displayedInfo.text = "The nest time the other character takes an action, they take it twice.";
         displayedInfo.art = Resources.Load<Sprite>("");
+
+        InitializeCardGameObject();
     }
 
     public override void Effect()

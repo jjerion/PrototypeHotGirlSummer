@@ -12,23 +12,31 @@ public class Deck
     {
         deckList = GameController.partyDeck;
         cardsInDeck = new List<Card>();
-        cardsInDeck = deckList.allCards;
+        cardsInDeck.AddRange(deckList.allCards);
+        Shuffle();
     }
     
     public Card Draw()
     {
+        Debug.Assert(cardsInDeck.Count > 0, "Assertion Failed: Deck is empty");
+        var totalCardsInDiscardPile = Encounter.playerDiscard.cardsInDiscard.Count;
+
         if (cardsInDeck.Count == 0)
         {
-            foreach (Card cardInDiscard in Encounter.playerDiscard.cardsInDiscard)
+            foreach (Card currentlyInDiscard in Encounter.playerDiscard.cardsInDiscard)
             {
-                Encounter.playerDiscard.cardsInDiscard.Remove(cardInDiscard);
-                cardsInDeck.Add(cardInDiscard);
+                
+                Encounter.playerDeck.AddToDeck(currentlyInDiscard);
             }
 
+            foreach (Card justAddedToDeck in Encounter.playerDeck.cardsInDeck)
+            {
+                Encounter.playerDiscard.RemoveFromDiscard(justAddedToDeck);
+            }
             Shuffle(); 
         }
         var cardToDraw = cardsInDeck[0];
-        cardsInDeck.RemoveAt(0);
+        RemoveFromDeck(cardToDraw);
         //Encounter.playerHand.AddToHand(cardToDraw);
         Debug.Log("drew card");
         return Encounter.playerHand.AddToHand(cardToDraw);
@@ -55,7 +63,7 @@ public class Deck
     public void Shuffle()
     {
         List<Card> newList = new List<Card>();
-        newList = cardsInDeck;
+        newList.AddRange(cardsInDeck);
         for (int i = 0; i <cardsInDeck.Count; i++)
         {
             int temporaryInt = (int)Mathf.Floor(Random.Range(0, newList.Count));

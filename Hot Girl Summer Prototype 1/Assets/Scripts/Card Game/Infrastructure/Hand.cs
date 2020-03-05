@@ -19,10 +19,11 @@ public class Hand
         {
             Encounter.playerActions--;
             cardsInHand.Remove(cardToPlay);
+            Encounter.playerDiscard.AddToDiscard(cardToPlay);
 
             //handTransforms.RemoveAt(0);
             //Services.encounter.UpdateHandSize();
-
+            cardToPlay.cardGameObject.transform.SetParent(null);
             cardToPlay.cardGameObject.SetActive(false);
             //Services.encounter.UpdateCardGameObjects();
             Services.encounter.Play(cardToPlay);
@@ -36,36 +37,26 @@ public class Hand
     {
         cardsInHand.Remove(cardToDiscard);
 
-        //handTransforms.RemoveAt(0);
-        //Services.encounter.UpdateHandSize();
+        cardToDiscard.cardGameObject.transform.SetParent(null);
+        cardToDiscard.cardGameObject.SetActive(false);
 
-        GameObject.Destroy(cardToDiscard.cardGameObject);
-        //Services.encounter.UpdateCardGameObjects();
-        
-        
+        Encounter.playerDiscard.AddToDiscard(cardToDiscard);
+
+
         return cardToDiscard;
     }
 
     public Card AddToHand(Card cardToAdd)
     {
         cardsInHand.Add(cardToAdd);
-        //handTransforms.Add(new RectTransform());
-        Services.encounter.UpdateHandSize();
-        Services.encounter.UpdateCardGameObjects();
 
-        Debug.Assert(cardToAdd != null, "cardToAdd is null");
-        Debug.Assert(cardToAdd.cardGameObject != null, "cardOnScreen is null");
-        //Debug.Assert(cardToAdd.cardOnScreen.cardGameObject != null, "cardDisplay is null");
 
         Debug.Log(Encounter.cardGUI.gameObject.name);
 
-        //GameObject newGameObject = Object.Instantiate<GameObject>(cardToAdd.cardGameObject, Vector3.zero, Quaternion.identity, Encounter.cardGUI.transform);
-        //newGameObject.SetActive(true);
-        //Debug.Log(newGameObject.name);
+
         cardToAdd.cardGameObject.transform.SetParent(Encounter.cardGUI.transform);
         cardToAdd.cardGameObject.SetActive(true);
         Debug.Log("Activated object");
-        //newGameObject.AddComponent<CardIdentifier>().whichCardIsThis = cardToAdd;
         return cardToAdd;
     }
 }

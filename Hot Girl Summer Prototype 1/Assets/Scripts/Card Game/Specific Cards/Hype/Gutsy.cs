@@ -14,6 +14,8 @@ public class Gutsy : Card
         displayedInfo.isPlayable = true;
         displayedInfo.text = "Immediately add +2 Hype cards to your deck. At the start of your turn, remove those two hype cards from your deck.";
         displayedInfo.art = Resources.Load<Sprite>("");
+
+        InitializeCardGameObject();
     }
 
     public override void Effect()
