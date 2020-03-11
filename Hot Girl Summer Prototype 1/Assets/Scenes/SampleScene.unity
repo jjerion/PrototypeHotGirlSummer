@@ -6771,7 +6771,6 @@ GameObject:
   - component: {fileID: 1354138847}
   - component: {fileID: 1354138880}
   - component: {fileID: 1354138879}
-  - component: {fileID: 1354138878}
   - component: {fileID: 1354138881}
   m_Layer: 0
   m_Name: Flowchart
@@ -8492,7 +8491,6 @@ MonoBehaviour:
   - {fileID: 1354138773}
   - {fileID: 1354138772}
   - {fileID: 1354138771}
-  - {fileID: 1354138878}
   - {fileID: 1354138881}
 --- !u!114 &1354138775
 MonoBehaviour:
@@ -12166,23 +12164,6 @@ MonoBehaviour:
   - {fileID: 1354138866}
   - {fileID: 1354138865}
   - {fileID: 1354138864}
---- !u!114 &1354138878
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354138714}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 190
-  indentLevel: 0
-  targetObject: {fileID: 1921361801}
-  methodName: LoadCardEncounter
-  delay: 1
 --- !u!114 &1354138879
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -12228,7 +12209,7 @@ MonoBehaviour:
   - {fileID: 1354138879}
 --- !u!114 &1354138881
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
